@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
+}
+
+/* make background image use full page */
+html, body {
+    margin: 0;
+}
+
+.full-screen-container {
+    background-image: url("../images/homebackground.png");
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.login-container {
+    border-radius: 25px;
+    background-color: hsla(201, 100%, 6%, 0.6);
+    padding: 40px 30px;
+    min-width: 30%;
+    max-width: 600px;
+}
+
+.login-title {
+    color: antiquewhite;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 40px;
+    font-size: 1.5em;
+    font-weight:lighter;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    color: #7B809A;
+    font-weight: lighter;
+    font-size: 0.9em;
+}
+
+
+.input-group input {
+    font-size: 1em;
+    padding: .1em .25em;
+    background-color: hsla(201, 100%, 91%, 0.3);
+    border: hsl(201, 100%,  6%);
+    outline: none;
+    border-radius: 5px;
+    color: whitesmoke;
+    font-weight: lighter;
+}
+
+/* blue outline on input fields */
+.input-group input:focus {
+    border: 1px solid hsl(201, 100%,  50%);
+}
+
+.login-button {
+    padding: 10px 30px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: transparent;
+    border: 1px solid hsl(201, 40%,  15%);
+    outline: none;
+    color: #7B809B;
+    font-size: 0.8em;
+    font-weight: lighter;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: hsla(180, 100%, 40%, 0.3);
+}
+
+.login-button:focus {
+    background-color: hsla(180, 100%, 40%, 0.5);
+}

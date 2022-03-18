@@ -6,15 +6,16 @@
   }
   
   header {
-    width: 100%;
+    flex-direction: column;
+    height: 100%;
+    width: 40px;
     top: 0;
     left: 0;
     position: fixed;
-    z-index: 100;
-
-
-    padding: 15px 10%;
-    background-color: transparent;
+    y-index: 100;
+    padding: 60px 10%;
+    background-color:  #354656
+  ;
   }
 
   .logo {
@@ -36,16 +37,29 @@
   .overlay__content a {
     display: flex;
 
-    justify-content: center;
+    justify-content: flex-start;
     font-family: "Nunito", sans-serif;
-    font-size: small;
+    font-size: medium;
     font-weight: 500;
     color: #edf0f1;
     text-decoration: none;
   }
 
-  .nav__links a::after{
-    content: url("../images/arrowdown.svg");
+  .link1::before{
+    white-space: normal;
+    content: url("../images/ticketicon.svg");
+    margin-left: 4px;
+
+  } .link2::before{
+    content: url("../images/metricsicon.svg");
+    margin-left: 4px;
+
+  } .link3::before{
+    content: url("../images/accountsicon.svg");
+    margin-left: 4px;
+
+  } .link4::before{
+    content: url("../images/settingsicon.svg");
     margin-left: 4px;
 
   }
@@ -53,12 +67,22 @@
   .nav__links {
     list-style: none;
     display: flex;
-    justify-content: center;
-    padding-top: 8px;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 300px;
+
+    position: fixed;
+    top: 100px;
+    left: 0px;
+
+    z-index: 9999;
+    padding: 9px 17px;
+
   }
   
   .nav__links li {
-    padding: 0px 20px;
+    padding: 30px 20px;
+    padding-left: 1px;
   }
   
   .nav__links li a {
@@ -71,17 +95,25 @@
   
   .cta {
     position: fixed;
-    top: 15px;
-    right: 12px;
+    bottom: 50px;
+    left: 10px;
+
     z-index: 9999;
     padding: 9px 17px;
-    background-color: rgba(0, 136, 169, 1);
+    background-color: transparent;
     border: none;
     border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease 0s;
   }
-  
+
+
+  .cta:before {
+    content: url("../images/logouticon.svg");
+
+
+  }
+
   .cta:hover {
     background-color: hsla(180, 100%, 40%, 0.5);
   }

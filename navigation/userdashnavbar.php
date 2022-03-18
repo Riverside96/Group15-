@@ -6,7 +6,7 @@
         <title>Navbar</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="navigation/navbar.css">
+        <link rel="stylesheet" href="navigation/userdashnavbar.css">
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap" rel="stylesheet">
 
     </head>
@@ -16,12 +16,13 @@
             <a class="logo2" href="/"><img src="../images/alpha.svg" width="60" height="60" alt="logo"></a>
             <nav>
                 <ul class="nav__links">
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Information</a></li>
+                    <li><a href="#">IT Support</a></li>
+                    <li><a href="#">General Request</a></li>
+                    <li><a href="#">View Outstanding Tickets</a></li>
 
                 </ul>
             </nav>
-            <a class="cta" href="../pages/login.php">Login</a>
+            <a class="cta" href="../pages/login.php">Logout</a>
             <p class="menu cta">Menu</p>
         </header>
         <div class="overlay">
