@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <!---------------- Creates General Request Ticket---------------------------- -->
     <?php include'../navigation/userdashnavbar.php';  ?>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap" rel="stylesheet">
     <meta charset="UTF-8">

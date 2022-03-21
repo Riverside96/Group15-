@@ -1,7 +1,10 @@
+
+<!----------------------Create IT Ticket Backend Logic---------------------------- -->
 <?php
 require ('../config/dbcon.php');
 if(isset($_POST['submit']))
 {
+
 
     date_default_timezone_set('Europe/London');
 

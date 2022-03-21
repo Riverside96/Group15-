@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="en">
+
+
+
+<!---------------- View Outstanding Tickets (User) ---------------------------- -->
 <head>
     <?php include'../navigation/userdashnavbar.php';
     require ('../config/dbcon.php'); ?>
