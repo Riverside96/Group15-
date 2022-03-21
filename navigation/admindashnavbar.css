@@ -13,7 +13,7 @@
     left: 0;
     position: fixed;
     y-index: 100;
-    padding: 60px 10%;
+    padding: 20px 8%;
     background-color:  #354656
   ;
   }
@@ -181,7 +181,7 @@
       right: 35px;
     }
   }
-  
+
   @media only screen and (max-width: 800px) {
     .nav__links,
     .cta {
@@ -191,4 +191,3 @@
       display: initial;
     }
   }
-  
