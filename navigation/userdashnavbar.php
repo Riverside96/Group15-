@@ -22,7 +22,7 @@
 
                 </ul>
             </nav>
-            <a class="cta" href="../pages/login.php">Logout</a>
+            <a class="cta" href="../pages/home.php">Logout</a>
             <p class="menu cta">Menu</p>
         </header>
         <div class="overlay">

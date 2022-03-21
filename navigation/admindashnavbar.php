@@ -11,6 +11,8 @@
 
     </head>
     <body>
+
+    <div class="navbar">
         <header>
             <a class="logo" href="/"><img src="../images/logo.svg" width="45" height="45" alt="logo"></a>
             <a class="logo2" href="/"><img src="../images/alpha.svg" width="60" height="60" alt="logo"></a>
@@ -22,7 +24,7 @@
                     <li><a href="#" class="link4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Settings</a></li>
                 </ul>
             </nav>
-            <a class="cta" href="../pages/login.php">&nbsp;&nbsp;&nbsp;&nbsp;Login</a>
+            <a class="cta" href="../pages/home.php">&nbsp;&nbsp;&nbsp;&nbsp;Logout</a>
             <p class="menu cta">Menu</p>
         </header>
         <div class="overlay">
@@ -33,6 +35,7 @@
                 <a href="#">About</a>
             </div>
         </div>
+    </div>
 
     </body>
 </html>

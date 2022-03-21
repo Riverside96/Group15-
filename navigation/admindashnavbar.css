@@ -8,12 +8,12 @@
   header {
     flex-direction: column;
     height: 100%;
-    width: 40px;
+    width: 13%;
     top: 0;
     left: 0;
     position: fixed;
-    y-index: 100;
-    padding: 20px 8%;
+
+
     background-color:  #354656
   ;
   }
