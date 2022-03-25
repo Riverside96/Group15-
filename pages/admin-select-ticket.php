@@ -22,6 +22,7 @@
         $id = $_GET['id'];
         session_start();
         $ticketid = $id;
+        $_SESSION['ticketID'] = $ticketid;
 
         $query = "SELECT * FROM itticket where id=:id ";
         $statement = $conn->prepare($query);

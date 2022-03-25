@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
+}
+
+/* make background image use full page */
+html, body {
+    margin: 0;
+}
+
+.full-screen-container {
+
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.login-container {
+    border-radius: 25px;
+    background-color: hsla(201, 100%, 6%, 0.6);
+    padding: 40px 30px;
+    min-width: 80%;
+    max-width: 600px;
+    margin-left: 160px;
+}
+
+.Title-Description {
+    color: #7B809A;
+    text-align: right;
+    margin-top: 1px;
+    font-size: 0.8em;
+    font-weight: lighter;
+}
+
+.Form-Title {
+    color: antiquewhite;
+    text-align: right;
+    margin: 0;
+    margin-top: 1px;
+    font-size: 1.5em;
+    font-weight:lighter;
+}
+
+select {
+    box-shadow: 0 10px 25px black;
+    font-size: 0.9em;
+    padding: 0.5em 0.5em;
+    margin-bottom: 15px;
+    background: #354656;
+    color: whitesmoke;
+    border: transparent;
+    border-radius: 6px;
+}
+
+
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+
+
+
+}
+
+.input-group label {
+    color: #7B809A;
+    font-weight: lighter;
+    font-size: 0.9em;
+
+
+
+
+}
+
+
+.brief-description,
+.full-description {
+
+    font-size: 1em;
+    padding: .1em .25em;
+    background-color: hsla(201, 100%, 91%, 0.3);
+    border: hsl(201, 100%,  6%);
+    outline: none;
+    border-radius: 5px;
+    color: whitesmoke;
+    font-weight: lighter;
+}
+
+
+
+/* blue outline on input fields */
+.input-group input:focus {
+    border: 1px solid hsl(201, 100%,  50%);
+}
+
+.login-button {
+    padding: 10px 30px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: transparent;
+    border: 1px solid hsl(201, 40%,  15%);
+    outline: none;
+    color: #7B809B;
+    font-size: 0.8em;
+    font-weight: lighter;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: hsla(180, 100%, 40%, 0.3);
+}
+
+.login-button:focus {
+    background-color: hsla(180, 100%, 40%, 0.5);
+}
