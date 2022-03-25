@@ -27,7 +27,11 @@
                                   <!--View IT Tickets-->
     <!--===========================================================================================-->
     <?php
-    $query = "SELECT * FROM itticket";
+    session_start();
+    $user = $_SESSION['id'];
+
+
+    $query = "SELECT * FROM itticket where user = $user";
     $statement = $conn->prepare($query);
     $statement->execute();
 

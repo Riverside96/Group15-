@@ -1,6 +1,7 @@
 
 <!----------------------Create IT Ticket Backend Logic---------------------------- -->
 <?php
+session_start();
 require ('../config/dbcon.php');
 if(isset($_POST['submit']))
 {
@@ -8,6 +9,7 @@ if(isset($_POST['submit']))
 
     date_default_timezone_set('Europe/London');
 
+    $user = $_SESSION['id'];
     $type = 'IT Support';
     $severity = $_POST['severity'];
     $brief = $_POST['brief'];
@@ -15,14 +17,17 @@ if(isset($_POST['submit']))
     $status = 'Pending';
     $createdon = date('m/d/y h:i a', time());
 
+
+
     echo $createdon;
 
-    $query = "INSERT INTO itticket (type, severity, brief, full, status, createdon) VALUES (:type, :severity, :brief, :full, :status, :createdon)";
+    $query = "INSERT INTO itticket (user, type, severity, brief, full, status, createdon) VALUES (:user, :type, :severity, :brief, :full, :status, :createdon)";
     $query_run = $conn->prepare($query);
 
 
 
     $data = [
+        ':user' => $user,
         ':type' => $type,
         ':severity' => $severity,
         ':brief' => $brief,

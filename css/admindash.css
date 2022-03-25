@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
+}
+
+.full-screen-container {
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.greeting {
+   display: flex;
+    justify-content: center;
+    align-items: center;
+
+    justify-content: flex-start;
+    font-family: "Nunito", sans-serif;
+    font-size: medium;
+    font-weight: 500;
+    color: #edf0f1;
+    text-decoration: none;
+    font-size: 70px;
+    padding-left: 30px;
+}

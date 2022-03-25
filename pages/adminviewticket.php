@@ -33,11 +33,11 @@
             <th>Type</th>
             <th>Severity</th>
             <th>Brief Description</th>
-            <th>Full Description</th>
             <th> Open Date</th>
             <th>Status</th>
-
+            <th>View</th>
         </tr>
+
         </thead>
 
         <?php foreach($result as $data) { ?>
@@ -46,9 +46,13 @@
                 <td><?= $data->type; ?> </td>
                 <td><?= $data->severity; ?> </td>
                 <td><?= $data->brief; ?> </td>
-                <td><?= $data->full; ?> </td>
                 <td><?= $data->createdon ?> </td>
                 <td><?= $data->status; ?> </td>
+                <td>
+                    <a href="../pages/admin-select-ticket.php?id=<?= $data->id; ?>" class="selectbutton">Select</a>
+                </td>
+                
+                
             </tr>
 
             <?php
@@ -75,7 +79,6 @@
             <th>Type</th>
             <th>Request Type</th>
             <th>Brief Description</th>
-            <th>Full Description</th>
             <th>Open Date</th>
             <th>Status</th>
         </tr>
@@ -87,7 +90,6 @@
                 <td><?= $data->type; ?> </td>
                 <td><?= $data->request; ?> </td>
                 <td><?= $data->brief; ?> </td>
-                <td><?= $data->full; ?> </td>
                 <td><?= $data->createdon; ?> </td>
                 <td><?= $data->status; ?> </td>
 
