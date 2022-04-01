@@ -20,9 +20,10 @@ if(isset($_POST['submit']))
 
     $status = $_POST['status'];
     $comment = $_POST['comment'];
+    $updatedon = date('m/d/y h:i a', time());
 
 
-    $query = "UPDATE itticket SET status=:status, comment=:comment WHERE id=$ticketID";
+    $query = "UPDATE itticket SET status=:status, comment=:comment, updatedon=:updatedon WHERE id=$ticketID";
     $query_run = $conn->prepare($query);
 
 
@@ -31,6 +32,8 @@ if(isset($_POST['submit']))
 
         ':status' => $status,
         ':comment' => $comment,
+        ':updatedon' => $updatedon,
+
     ];
     $query_execute = $query_run->execute($data);
 

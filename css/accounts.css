@@ -1,0 +1,22 @@
+.links {
+    box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: break-spaces;
+
+}
+
+.links a {
+    color: whitesmoke;
+    font-size: larger;
+    text-decoration: none;
+    transition: color 1s ease 0s;
+}
+
+.links a:hover {
+    color: #0088a9;
+
+}

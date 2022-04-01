@@ -20,7 +20,7 @@
                 <ul class="nav__links">
                     <li><a href="../pages/adminviewticket.php" class="link1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tickets</a></li>
                     <li><a href="#" class="link2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Metrics</a></li>
-                    <li><a href="#" class="link3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accounts</a></li>
+                    <li><a href="../pages/accounts.php" class="link3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accounts</a></li>
                     <li><a href="#" class="link4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Settings</a></li>
                 </ul>
             </nav>
