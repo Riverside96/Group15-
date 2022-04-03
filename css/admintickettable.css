@@ -4,11 +4,6 @@
 }
 
 .ticket-table {
-
-
-
-
-
     table-layout: fixed;
 
     margin-top: 100px;
@@ -23,6 +18,7 @@
     border-radius: 10px 10px 0 0;
     box-shadow: 0 0 20px rgba(0, 0 ,0, 0.20);
     overflow: hidden;
+
 }
 
 
@@ -59,4 +55,20 @@
 .ticket-table tbody tr.active-row {
     font-weight: bold;
     color: #354656;
+}
+
+.ticket-table a {
+    text-decoration : none;
+    color: mediumpurple;
+    transition: color 0.3s ease 0s;
+
+}
+
+.ticket-table a:hover {
+    color: #0088a9;
+}
+
+
+.ticket-table a:active {
+    color: white;
 }
