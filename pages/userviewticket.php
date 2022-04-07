@@ -76,7 +76,7 @@
                                     <!--View General Requests-->
     <!--===========================================================================================-->
     <?php
-    $query = "SELECT * FROM requestticket";
+    $query = "SELECT * FROM requestticket where user = $user";
     $statement = $conn->prepare($query);
     $statement->execute();
 

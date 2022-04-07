@@ -1,12 +1,14 @@
 
 <!----------------------Create General Request Backend Logic---------------------------- -->
 <?php
+session_start();
 require ('../config/dbcon.php');
 if(isset($_POST['submit']))
 {
 
     date_default_timezone_set('Europe/London');
 
+    $user = $_SESSION['id'];
     $type = 'General Request';
     $request = $_POST['request'];
     $brief = $_POST['brief'];
@@ -14,12 +16,13 @@ if(isset($_POST['submit']))
     $status = 'Pending';
     $createdon = date('m/d/y h:i a', time());
 
-    $query = "INSERT INTO requestticket (type, request, brief, full, status, createdon) VALUES (:type, :request, :brief, :full, :status, :createdon)";
+    $query = "INSERT INTO requestticket (user, type, request, brief, full, status, createdon) VALUES (:user, :type, :request, :brief, :full, :status, :createdon)";
     $query_run = $conn->prepare($query);
 
 
 
     $data = [
+        ':user' => $user,
         ':type' => $type,
         ':request' => $request,
         ':brief' => $brief,
