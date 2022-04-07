@@ -23,8 +23,8 @@
             <form action="../process/create-request-form-process.php" method="POST">
 
                 <div class="custom-select">
-                    <select name="request">
-                        <option style="display:none">Describe Request</option>
+                    <select required name="request">
+                        <option value="" style="display:none">Describe Request</option>
                         <option value="1">Request for password reset</option>
                         <option value="2">Request for access control</option>
                         <option value="3">Request for procurement</option>
@@ -36,11 +36,11 @@
 
                 <div class="input-group">
                     <label>Enter Brief Description</label>
-                    <textarea class="brief-description" name="brief" type="text"></textarea>
+                    <textarea required class="brief-description" name="brief" type="text"></textarea>
                 </div>
                 <div class="input-group">
                     <label>Enter Full Description </label>
-                    <textarea class="full-description" name="full" type="text" style="width: 100%; height: 200px;"></textarea>
+                    <textarea required class="full-description" name="full" type="text" style="width: 100%; height: 200px;"></textarea>
                 </div>
                 <button href="../pages/admindash.php" name="submit" type="submit" class="login-button">Submit</button>
 

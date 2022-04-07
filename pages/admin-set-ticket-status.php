@@ -28,8 +28,8 @@
             <form action="../process/update-ticket-status-process.php" method="POST">
 
                 <div class="custom-select">
-                    <select name="status">
-                        <option style="display:none">Set Status</option>
+                    <select required name="status">
+                        <option value="" style="display:none">Set Status</option>
                         <option value="Pending">Pending</option>
                         <option value="Active">Active</option>
                         <option value="Completed">Completed</option>
@@ -39,7 +39,7 @@
 
                 <div class="input-group">
                     <label>Add progression comment</label>
-                    <textarea class="full-description" name="comment" type="text" style="width: 100%; height: 200px;"></textarea>
+                    <textarea required class="full-description" name="comment" type="text" style="width: 100%; height: 200px;"></textarea>
                 </div>
 
                 <button href="../pages/admindash.php" name="submit" type="submit" class="login-button">Submit</button>

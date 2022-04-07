@@ -24,27 +24,27 @@
 
                 <div class="input-group">
                     <label>Email</label>
-                    <input type="email" name = "email">
+                    <input required type="email" name = "email">
                 </div>
 
                 <div class="input-group">
                     <label>Password</label>
-                    <input type="password" name = "password">
+                    <input required type="password" name = "password">
                 </div>
 
                 <div class="input-group">
                     <label>First Name</label>
-                    <input type="text" name = "fname">
+                    <input required type="text" name = "fname">
                 </div>
 
                 <div class="input-group">
                     <label>Last Name</label>
-                    <input type="text" name = "lname">
+                    <input required type="text" name = "lname">
                 </div>
 
                 <div class="custom-select">
-                    <select name="user">
-                        <option style="display:none">User Type</option>
+                    <select required name="user">
+                        <option value="" style="display:none">User Type</option>
                         <option value="user">User</option>
                         <option value="it">IT Team</option>
 

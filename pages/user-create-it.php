@@ -23,8 +23,8 @@
             <form action="../process/create-it-form-process.php" method="POST">
 
                 <div class="custom-select">
-                    <select name="severity">
-                        <option style="display:none">Select Severity</option>
+                    <select required name="severity">
+                        <option value="" style="display:none">Select Severity</option>
                         <option value="1">Critical Incident</option>
                         <option value="2">High Incident</option>
                         <option value="3">Medium Incident</option>
@@ -35,11 +35,11 @@
 
                 <div class="input-group">
                     <label>Enter Brief Description</label>
-                    <textarea class="brief-description" name="brief" type="text"></textarea>
+                    <textarea required class="brief-description" name="brief" type="text"></textarea>
                 </div>
                 <div class="input-group">
                     <label>Enter Full Description </label>
-                    <textarea class="full-description" name="full" type="text" style="width: 100%; height: 200px;"></textarea>
+                    <textarea required class="full-description" name="full" type="text" style="width: 100%; height: 200px;"></textarea>
                 </div>
                 <button href="../pages/admindash.php" name="submit" type="submit" class="login-button">Submit</button>
 
