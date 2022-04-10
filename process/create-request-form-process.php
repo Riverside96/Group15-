@@ -14,9 +14,11 @@ if(isset($_POST['submit']))
     $brief = $_POST['brief'];
     $full = $_POST['full'];
     $status = 'Pending';
+    $comment = 'N/A';
     $createdon = date('m/d/y h:i a', time());
+    $updatedon = 'N/A';
 
-    $query = "INSERT INTO requestticket (user, type, request, brief, full, status, createdon) VALUES (:user, :type, :request, :brief, :full, :status, :createdon)";
+    $query = "INSERT INTO requestticket (user, type, request, brief, full, status, comment, createdon, updatedon) VALUES (:user, :type, :request, :brief, :full, :status, :comment, :createdon, :updatedon)";
     $query_run = $conn->prepare($query);
 
 
@@ -28,7 +30,9 @@ if(isset($_POST['submit']))
         ':brief' => $brief,
         ':full' => $full,
         ':status' => $status,
+        ':comment' => $comment,
         ':createdon' => $createdon,
+        ':updatedon' => $updatedon
 
 
     ];

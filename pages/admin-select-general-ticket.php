@@ -18,15 +18,33 @@
     <!--===========================================================================================-->
     <?php
 
+
     if(isset($_GET['id'])) {
         $id = $_GET['id'];
         session_start();
         $ticketid = $id;
         $_SESSION['ticketID'] = $ticketid;
 
-        $query = "SELECT * FROM itticket where id=:id ";
+        $query = "SELECT requestticket.id, 
+                         Users.fname ||' '|| Users.lname AS name, 
+                         generalrequest.requestdescription,
+                         requestticket.brief,
+                         requestticket.full,
+                         requestticket.createdon, 
+                         generalrequest.response, 
+                         requestticket.comment,
+                         requestticket.status
+
+              FROM requestticket
+              LEFT JOIN generalrequest
+              ON requestticket.request=generalrequest.id
+              LEFT JOIN Users 
+              ON requestticket.user = Users.id
+              WHERE requestticket.id = :id";
+
+
         $statement = $conn->prepare($query);
-        $data = [':id' => $id];
+        $data = [':id' => $id,];
         $statement->execute($data);
 
         $statement->setFetchMode(PDO::FETCH_OBJ);
@@ -39,14 +57,15 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>Type</th>
-            <th>Severity</th>
-            <th>Brief Description</th>
-            <th>Full Description</th>
-            <th>Open Date</th>
+            <th>User</th>
+            <th>Request Type</th>
+            <th>Brief</th>
+            <th>Description</th>
+            <th>Creation Date</th>
+            <th>Response Time</th>
             <th>Comment</th>
             <th>Status</th>
-            <th>Set Status</th>
+            <th>Select</th>
 
         </tr>
 
@@ -55,15 +74,16 @@
         <?php foreach($result as $data) { ?>
             <tr>
                 <td><?= $data->id; ?> </td>
-                <td><?= $data->type; ?> </td>
-                <td><?= $data->severity; ?> </td>
+                <td><?= $data->name; ?> </td>
+                <td><?= $data->requestdescription; ?> </td>
                 <td><?= $data->brief; ?> </td>
                 <td><?= $data->full; ?> </td>
-                <td><?= $data->createdon ?> </td>
+                <td><?= $data->createdon; ?> </td>
+                <td><?= $data->response; ?> </td>
                 <td><?= $data->comment; ?> </td>
                 <td><?= $data->status; ?> </td>
                 <td>
-                    <a href="admin-set-ticket-status.php?id=<?= $data->id; ?>" class="setstatus">Set Status</a>
+                    <a href="admin-set-general-ticket-status.php?id=<?= $data->id; ?>" class="setstatus">Set Status</a>
                 </td>
                 
                 

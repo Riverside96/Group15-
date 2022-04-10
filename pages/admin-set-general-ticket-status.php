@@ -20,12 +20,12 @@
 <body bgcolor="#2E3746">
 <div class="full-screen-container">
 
-<!--//===========================Update IT-Ticket Status Form=================================================================//-->
+<!--//===========================Update General Ticket Status Form=================================================================//-->
         <div class="login-container">
             <h3 class="Title-Description">Resolve tickets here</h3>
             <h3 class="Form-Title">Update Ticket Status</h3>
 
-            <form action="../process/update-ticket-status-process.php" method="POST">
+            <form action="../process/update-general-ticket-status-process.php" method="POST">
 
                 <div class="custom-select">
                     <select required name="status">

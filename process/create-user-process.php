@@ -18,8 +18,8 @@ if(isset($_POST['submit'])) {
         $data = [
         ':email' => $email,
         ':password' => $password,
-        ':fname' => $fname,
-        ':lname' => $lname,
+        ':fname' => ucfirst($fname),
+        ':lname' => ucfirst($lname),
         ':user' => $user,
     ];
     $query_execute = $query_run->execute($data);

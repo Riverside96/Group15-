@@ -14,18 +14,24 @@
 <body bgcolor="#2E3746">
 <div class="full-screen-container">
 
-    <!--View IT Tickets-->
+
+    <!--View General Requests-->
     <!--===========================================================================================-->
     <?php
-    $query = "
+    $query = "SELECT requestticket.id,
+                     requestticket.type,
+                     Users.fname ||' '|| Users.lname AS name,
+                     generalrequest.requestdescription,
+                     requestticket.brief,
+                     requestticket.createdon, 
+                     generalrequest.response,
+                     requestticket.status
 
-select itticket.id, itticket.type, itticket.brief, itticket.createdon, itticket.status,
-itsupportservices.severity, itsupportservices.response, itsupportservices.recovery
-from itticket
-left join itsupportservices
-on itticket.severity=itsupportservices.id
-order by itticket.createdon DESC;
-";
+              FROM requestticket
+              LEFT JOIN generalrequest
+              ON requestticket.request=generalrequest.id
+              LEFT JOIN Users 
+              ON requestticket.user = Users.id";
 
 
 
@@ -36,53 +42,48 @@ order by itticket.createdon DESC;
     $result = $statement->fetchAll();
     ?>
 
-    <table class="ticket-table">
+    <table class="ticket-table" >
 
         <thead>
         <tr>
             <th>ID</th>
             <th>Type</th>
+            <th>User</th>
+            <th>Request</th>
             <th>Brief Description</th>
-            <th>Open Date</th>
+            <th>Creation Date</th>
+            <th>Response Time</th>
             <th>Status</th>
-            <th>Severity</th>
-            <th>Response</th>
-            <th>Recovery</th>
-            <th>test</th>
             <th>Select</th>
-
-            <?php $test  = 10; ?>
-
         </tr>
-
         </thead>
 
         <?php foreach($result as $data) { ?>
-
-
-
-
             <tr>
                 <td><?= $data->id; ?> </td>
                 <td><?= $data->type; ?> </td>
+                <td><?= $data->name; ?> </td>
+                <td><?= $data->requestdescription; ?> </td>
                 <td><?= $data->brief; ?> </td>
                 <td><?= $data->createdon; ?> </td>
-                <td><?= $data->status; ?> </td>
-                <td><?= $data->severity; ?> </td>
                 <td><?= $data->response; ?> </td>
-                <td><?= $data->recovery; ?> </td>
-                <td><?= $test; ?> </td>
+                <td><?= $data->status; ?> </td>
                 <td>
-                    <a href="../pages/admin-select-ticket.php?id=<?= $data->id; ?>" class="selectbutton">Select</a>
+                    <a href="../pages/admin-select-general-ticket.php?id=<?= $data->id; ?>" class="selectbutton">Select</a>
                 </td>
-                
-                
             </tr>
 
             <?php
         }
         ?>
     </table>
+
+
+
+
+
+
+
 </div>
 </body>
 </html>
