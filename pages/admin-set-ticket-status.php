@@ -23,7 +23,7 @@
 <!--//===========================Update IT-Ticket Status Form=================================================================//-->
         <div class="login-container">
             <h3 class="Title-Description">Resolve tickets here</h3>
-            <h3 class="Form-Title">Update Ticket Status</h3>
+            <h3 class="Form-Title">Update IT Support Ticket</h3>
 
             <form action="../process/update-ticket-status-process.php" method="POST">
 
@@ -36,6 +36,18 @@
                     </select>
                     <span class="custom-arrow"></span>
                 </div>
+
+                <div class="custom-select">
+                    <select required name="severity">
+                        <option value="" style="display:none">Set Severity</option>
+                        <option value="1">Critical Incident</option>
+                        <option value="2">High Incident</option>
+                        <option value="3">Medium Incident</option>
+                        <option value="4">Low Incident</option>
+                    </select>
+                    <span class="custom-arrow"></span>
+                </div>
+
 
                 <div class="input-group">
                     <label>Add progression comment</label>

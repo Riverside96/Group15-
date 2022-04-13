@@ -1,0 +1,17 @@
+
+.selectbutton {
+    text-decoration : none;
+    color: #0088a9;
+    transition: color 0.3s ease 0s;
+
+}
+
+.selectbutton:hover {
+    color: antiquewhite;
+}
+
+
+.selectbutton:active {
+    color: #0088a9;
+}
+

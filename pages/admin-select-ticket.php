@@ -24,7 +24,19 @@
         $ticketid = $id;
         $_SESSION['ticketID'] = $ticketid;
 
-        $query = "SELECT * FROM itticket where id=:id ";
+        $query = "select 
+               itticket.id,
+               itticket.type,
+               itticket.brief,
+               itticket.createdon,
+               itticket.status,
+               itsupportservices.severity,
+               itsupportservices.response, 
+               itsupportservices.recovery
+        from itticket
+        left join itsupportservices
+        on itticket.severity=itsupportservices.id
+        WHERE itticket.id = :id";
         $statement = $conn->prepare($query);
         $data = [':id' => $id];
         $statement->execute($data);
@@ -40,14 +52,14 @@
         <tr>
             <th>ID</th>
             <th>Type</th>
-            <th>Severity</th>
             <th>Brief Description</th>
-            <th>Full Description</th>
             <th>Open Date</th>
-            <th>Comment</th>
             <th>Status</th>
-            <th>Set Status</th>
+            <th>Severity</th>
+            <th>Response</th>
+            <th>Recovery</th>
 
+            <th>Select</th>
         </tr>
 
         </thead>
@@ -56,16 +68,15 @@
             <tr>
                 <td><?= $data->id; ?> </td>
                 <td><?= $data->type; ?> </td>
-                <td><?= $data->severity; ?> </td>
                 <td><?= $data->brief; ?> </td>
-                <td><?= $data->full; ?> </td>
-                <td><?= $data->createdon ?> </td>
-                <td><?= $data->comment; ?> </td>
+                <td><?= $data->createdon; ?> </td>
                 <td><?= $data->status; ?> </td>
+                <td><?= $data->severity; ?> </td>
+                <td><?= $data->response; ?> </td>
+                <td><?= $data->recovery; ?> </td>
                 <td>
-                    <a href="admin-set-ticket-status.php?id=<?= $data->id; ?>" class="setstatus">Set Status</a>
+                    <a href="../pages/admin-set-ticket-status.php?id=<?= $data->id; ?>" class="setstatus">Set Status</a>
                 </td>
-                
                 
             </tr>
 

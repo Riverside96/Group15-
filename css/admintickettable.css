@@ -4,6 +4,7 @@
 }
 
 .ticket-table {
+    display: flex;
     table-layout: fixed;
 
     margin-top: 100px;
@@ -57,6 +58,9 @@
     color: #354656;
 }
 
+
+
+
 .ticket-table a {
     text-decoration : none;
     color: #0088a9;
@@ -72,3 +76,7 @@
 .ticket-table a:active {
     color: #0088a9;
 }
+
+
+
+

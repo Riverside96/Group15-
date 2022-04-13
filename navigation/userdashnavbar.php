@@ -18,7 +18,7 @@
                 <ul class="nav__links">
                     <li><a href="../pages/user-create-it.php">IT Support</a></li>
                     <li><a href="../pages/user-create-request.php">General Request</a></li>
-                    <li><a href="../pages/userviewticket.php">View Outstanding Tickets</a></li>
+                    <li><a class="viewticketbutton" href="../pages/user-ticket-type-selection.php">View Outstanding Tickets</a></li>
 
                 </ul>
             </nav>

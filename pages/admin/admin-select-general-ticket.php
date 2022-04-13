@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php include'../navigation/admindashnavbar.php';
-    require ('../config/dbcon.php'); ?>
+    <?php include '../navigation/admindashnavbar.php';
+    require('../config/dbcon.php'); ?>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Login Form</title>
-    <link rel="stylesheet" href="../navigation/admindashnavbar.css">
-    <link rel="stylesheet" href="../css/admintickettable.css">
+    <link rel="stylesheet" href="../../navigation/admindashnavbar.css">
+    <link rel="stylesheet" href="../../css/admintickettable.css">
 
 
 </head>
@@ -83,7 +83,7 @@
                 <td><?= $data->comment; ?> </td>
                 <td><?= $data->status; ?> </td>
                 <td>
-                    <a href="admin-set-general-ticket-status.php?id=<?= $data->id; ?>" class="setstatus">Set Status</a>
+                    <a href="../admin-set-general-ticket-status.php?id=<?= $data->id; ?>" class="setstatus">Set Status</a>
                 </td>
                 
                 

@@ -12,6 +12,7 @@
     <title>Login Form</title>
     <link rel="stylesheet" href="../navigation/userdashnavbar.css">
     <link rel="stylesheet" href="../css/usertickettable.css">
+    <link rel="stylesheet" href="../css/user-select-button.css">
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -20,18 +21,24 @@
 
 </head>
 <body bgcolor="#2E3746">
-<div class="full-screen-container">
 
 
 
-                                  <!--View IT Tickets-->
+
+    <!--View IT Tickets-->
     <!--===========================================================================================-->
     <?php
-    session_start();
-    $user = $_SESSION['id'];
+    if(isset($_GET['id'])) {
+        $id = $_GET['id'];
+        session_start();
+        $ticketid = $id;
+        $_SESSION['ticketID'] = $ticketid;
+    };
 
-
-    $query = "SELECT * FROM itticket where user = $user";
+    $query = "SELECT * FROM itticket 
+              left join itsupportservices
+              on itticket.severity = itsupportservices.id
+              where itticket.id = $id";
     $statement = $conn->prepare($query);
     $statement->execute();
 
@@ -41,59 +48,18 @@
 
     <table class="ticket-table">
 
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Type</th>
-        <th>Severity</th>
-        <th>Brief Description</th>
-        <th> Open Date</th>
-        <th>Status</th>
-        <th>Updated On</th>
-        <th>Comment</th>
-        <th>Created On</th>
-    </tr>
-    </thead>
-
-        <?php foreach($result as $data) { ?>
-        <tr>
-            <td><?= $data->id; ?> </td>
-            <td><?= $data->type; ?> </td>
-            <td><?= $data->severity; ?> </td>
-            <td><?= $data->brief; ?> </td>
-            <td><?= $data->createdon ?> </td>
-            <td><?= $data->status; ?> </td>
-            <td><?= $data->updatedon; ?> </td>
-            <td><?= $data->comment; ?> </td>
-            <td><?= $data->createdon; ?> </td>
-        </tr>
-
-        <?php
-        }
-        ?>
-    </table>
-
-                                    <!--View General Requests-->
-    <!--===========================================================================================-->
-    <?php
-    $query = "SELECT * FROM requestticket where user = $user";
-    $statement = $conn->prepare($query);
-    $statement->execute();
-
-    $statement->setFetchMode(PDO::FETCH_OBJ);
-    $result = $statement->fetchAll();
-    ?>
-
-    <table class="ticket-table" >
-
         <thead>
         <tr>
             <th>ID</th>
             <th>Type</th>
-            <th>Request Type</th>
+            <th>Severity</th>
+            <th>Response</th>
             <th>Brief Description</th>
             <th>Full Description</th>
             <th>Open Date</th>
+            <th>Created On</th>
+            <th>Updated On</th>
+            <th>Comment</th>
             <th>Status</th>
         </tr>
         </thead>
@@ -102,22 +68,20 @@
             <tr>
                 <td><?= $data->id; ?> </td>
                 <td><?= $data->type; ?> </td>
-                <td><?= $data->request; ?> </td>
+                <td><?= $data->severity; ?> </td>
+                <td><?= $data->response; ?> </td>
                 <td><?= $data->brief; ?> </td>
                 <td><?= $data->full; ?> </td>
+                <td><?= $data->createdon ?> </td>
                 <td><?= $data->createdon; ?> </td>
+                <td><?= $data->updatedon; ?> </td>
+                <td><?= $data->comment; ?> </td>
                 <td><?= $data->status; ?> </td>
-
             </tr>
-
             <?php
         }
         ?>
     </table>
 
-
-
-
-</div>
 </body>
 </html>
