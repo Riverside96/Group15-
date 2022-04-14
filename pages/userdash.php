@@ -3,9 +3,9 @@
 <head>
     <?php include '../navigation/userdashnavbar.php';
     include("../process/CheckSession.php");
- 
+
     $path = "../pages/login.php";
-   
+
     session_start();
     if (!isset($_SESSION['id'])){
         session_unset();
@@ -27,10 +27,20 @@
         $lname= $row['lname'];
     }
     ?>
+
+
+
+
     <!-- //-------------------------------------------------------------------------//-->
+
+
+
+
+
+
      ?>
 
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Login Form</title>

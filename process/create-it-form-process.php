@@ -11,7 +11,7 @@ if(isset($_POST['submit']))
 
     $user = $_SESSION['id'];
     $type = 'IT Support';
-    $severity = 'Medium incident';
+    $severity = '3';
     $brief = $_POST['brief'];
     $full = $_POST['full'];
     $status = 'Pending';
