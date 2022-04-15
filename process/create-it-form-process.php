@@ -16,7 +16,10 @@ if(isset($_POST['submit']))
     $full = $_POST['full'];
     $status = 'Pending';
     $comment = 'N/A';
-    $createdon = date('m/d/y h:i a', time());
+//    $createdon = date('m/d/y h:i a', time());
+//    maybe change to display in the above format?
+//    below format is for timeleft process
+    $createdon = date('Y-m-d H:i:s', time());
     $updatedon = 'N/A';
 
 

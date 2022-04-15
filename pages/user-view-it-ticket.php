@@ -11,12 +11,12 @@
     <meta charset="UTF-8">
     <title>Login Form</title>
     <link rel="stylesheet" href="../navigation/userdashnavbar.css">
-    <link rel="stylesheet" href="../css/usertickettable.css">
+    <link rel="stylesheet" href="../css/admintickettable.css">
     <link rel="stylesheet" href="../css/user-select-button.css">
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 
 
 </head>

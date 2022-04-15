@@ -4,23 +4,28 @@
 }
 
 .ticket-table {
-
+    display: flex;
     table-layout: fixed;
+
     margin-top: 100px;
-    margin-left: auto;
+    margin-left: 20%;
     margin-right: auto;
-    margin-bottom: 100px;
+    margin-bottom: 0px;
+
     font-size: 0.9em;
-    min-width: 940px;
-    max-width: 940px;
-    border-collapse: collapse;
+    min-width: 70%;
+    max-width: 70%;
+   border-collapse: collapse;
     border-radius: 10px 10px 0 0;
     box-shadow: 0 0 20px rgba(0, 0 ,0, 0.20);
     overflow: hidden;
+
 }
 
+
+
 .ticket-table thead tr {
-    background-color: #354656;
+   background-color: #354656;
     color: whitesmoke;
     text-align: left;
     font-weight: bold;
@@ -52,3 +57,26 @@
     font-weight: bold;
     color: #354656;
 }
+
+
+
+
+.ticket-table a {
+    text-decoration : none;
+    color: #0088a9;
+    transition: color 0.3s ease 0s;
+
+}
+
+.ticket-table a:hover {
+    color: antiquewhite;
+}
+
+
+.ticket-table a:active {
+    color: #0088a9;
+}
+
+
+
+

@@ -1,5 +1,9 @@
+
 <?php
-    $date = "2022-04-14 02:45:33";
+    $timelimit = '1 hour 10 mins';
+    $createdon = new DateTime("2022-04-15 15:07:33");
+    $createdon->modify('+'.$timelimit.'');
+    $date= $createdon->format('Y-m-d H:i:s');
     ?>
 
 <div id="data">
@@ -13,8 +17,9 @@
 
         var date =  Math.abs((new Date().getTime() / 1000).toFixed(0));
         var date2 = Math.abs((new Date(dateValue).getTime() / 1000).toFixed(0));
-
         var diff = date2 - date;
+
+
 
         var days = Math.floor(diff / 86400);
         var hours = Math.floor(diff / 3600) % 24;
@@ -27,7 +32,7 @@
         if (mins < 10) {
             mins = "0" + mins;    // add leading zeros
         }
-        if (hours < 10) {
+        if (secs < 10) {
             secs = "0" + secs;    // add leading zeros
         }
 

@@ -69,7 +69,7 @@
                 <td><?= $data->response; ?> </td>
                 <td><?= $data->status; ?> </td>
                 <td>
-                    <a href="admin/admin-select-general-ticket.php?id=<?= $data->id; ?>" class="selectbutton">Select</a>
+                    <a href="admin-select-general-ticket.php?id=<?= $data->id; ?>" class="selectbutton">Select</a>
                 </td>
             </tr>
 
