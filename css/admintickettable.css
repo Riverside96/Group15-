@@ -4,7 +4,6 @@
 }
 
 .ticket-table {
-    display: flex;
     table-layout: fixed;
 
     margin-top: 100px;
@@ -15,7 +14,7 @@
     font-size: 0.9em;
     min-width: 70%;
     max-width: 70%;
-   border-collapse: collapse;
+    border-collapse: collapse;
     border-radius: 10px 10px 0 0;
     box-shadow: 0 0 20px rgba(0, 0 ,0, 0.20);
     overflow: hidden;
@@ -25,7 +24,7 @@
 
 
 .ticket-table thead tr {
-   background-color: #354656;
+    background-color: #354656;
     color: whitesmoke;
     text-align: left;
     font-weight: bold;
@@ -58,9 +57,6 @@
     color: #354656;
 }
 
-
-
-
 .ticket-table a {
     text-decoration : none;
     color: #0088a9;
@@ -74,9 +70,5 @@
 
 
 .ticket-table a:active {
-    color: #0088a9;
+    color: white;
 }
-
-
-
-
