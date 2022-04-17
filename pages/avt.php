@@ -137,7 +137,7 @@ order by itticket.createdon DESC;
                         limitdays= parseInt(limitdays);
 
 
-                        //add days to date function
+
                         function addDaysToDate(createddate, days) {
                             var result = createddate;
                             result.setUTCDate(createddate.getDate()+days);
