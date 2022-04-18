@@ -8,6 +8,7 @@
     <title>Login Form</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.30.1/date_fns.min.js" integrity="sha512-F+u8eWHrfY8Xw9BLzZ8rG/0wIvs0y+JyRJrXjp3VjtFPylAEEGwKbua5Ip/oiVhaTDaDs4eU2Xtsxjs/9ag2bQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="../navigation/admindashnavbar.css">
     <link rel="stylesheet" href="../css/admintickettable.css">
     <link rel="stylesheet" href="../css/searchbox.css">
@@ -49,10 +50,8 @@ order by itticket.createdon DESC;
             <th>Severity</th>
             <th>Response</th>
             <th>Recovery</th>
-            <th>test</th>
             <th>Select</th>
-            <?php $test  = 10; ?>
-        </tr>
+
         </thead>
 
         <?php foreach($result as $data) { ?>
@@ -63,9 +62,11 @@ order by itticket.createdon DESC;
                 <td><?= $data->createdon; ?> </td>
                 <td><?= $data->status; ?> </td>
                 <td><?= $data->severity; ?> </td>
-                <td><?= $data->response; ?> </td>
-                <td><?= $data->recovery; ?> </td>
+                <td style = "display: none";><?= $data->response; ?> </td>
+                <td style="display: none";><?= $data->recovery; ?> </td>
                 <td><?= $test; ?> </td>
+                <td><?= $responsetest; ?> </td>
+
                 <td>
                     <a href="../pages/admin-select-ticket.php?id=<?= $data->id; ?>" class="selectbutton">Select</a>
                 </td>
@@ -74,33 +75,13 @@ order by itticket.createdon DESC;
         }
         ?>
 
-
+        <!--JS Countdown Timer's Call-->
+        <!--===========================================================================================-->
+        <script type="text/javascript" src="../js/formatDate.js"></script>
+        <script type="text/javascript" src="../js/breakdownDate.js"></script>
         <!--Calculate Time Remaining (dictated by response)-->
         <!--===========================================================================================-->
-
         <script>
-            function func(createdOnDate) {
-                // var dateValue= document.getElementById("date").value;
-
-                var date =  Math.abs((new Date().getTime() / 1000).toFixed(0));
-                var date2 = Math.abs((new Date(createdOnDate).getTime() / 1000).toFixed(0));
-                var diff = date2 - date;
-
-                var days = Math.floor(diff / 86400);
-                var hours = Math.floor(diff / 3600) % 24;
-                var mins = Math.floor(diff / 60) % 60;
-                var secs = diff % 60;
-
-
-                // document.getElementById("data").innerHTML = days + " days, " + hours + ":" + mins + ":" + secs;
-                if (days>=0) {
-                    return days + " days, " + hours + ":" + mins + ":" + secs;
-                } else {
-                    return "late";
-                }
-            }
-
-
             const loopThroughTableRows = () => {
                 const tableRows = Array.from(document.getElementsByTagName('tr'));
                 tableRows.shift(); // removes first one, header
@@ -108,107 +89,38 @@ order by itticket.createdon DESC;
                 tableRows.forEach(row => {
                     var rowCols = row.getElementsByTagName('td');
                     var createdOnDate = rowCols[3];
-                    var timeLimit = rowCols[7];
-
-                    // function convertDateToUTC(date) {
-                    //     return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
-                    // }
-                    createdDate = new Date(createdOnDate.innerText);
-                    // createdDate = convertDateToUTC(createdDate);
-
-
-
-
-                    // if time limit is in days, remove text, & add to creation date-------------------//
-                    var limitdays = timeLimit.innerText;
-                    if (limitdays.includes(" days")) {
-                        limitdays = limitdays.replace("days", "");
-                        limitdays= parseInt(limitdays);
-
-                        function addDaysToDate(createddate, days) {
-                            var result = createddate;
-                            result.setDate(createddate.getDate()+days);
-                            return result;
-                        }
-                        var newDate = addDaysToDate(createdDate, limitdays);
-                        newDate.setHours(newDate.getHours()+1);             //account for UTC + 01:00
-
-                        // format newdate to iso & remove unwanted characters
-                        newDate = newDate.toISOString();
-                        if (newDate.includes("T")) {
-                            newDate = newDate.replace("T", " ");
-                        }
-                        if (newDate.includes(".000Z")) {
-                            newDate = newDate.replace(".000Z", "");
-                        }
-                    };
-                    //===================================================================================//
-
-                    // if time limit is in hours, remove text, & add to creation date-------------------//
-                    var limithours = timeLimit.innerText;
-                    if (limithours.includes(" hours")) {
-                        limithours = limithours.replace("hours", "");
-                        limithours= parseInt(limithours);
-
-                        function addHoursToDate(createddate, hours) {
-                            var result = createddate;
-                            result.setUTCHours(createddate.getUTCHours()+hours);
-                            return result;
-                        }
-                        var newDate = addHoursToDate(createdDate, limithours);
-                        newDate.setUTCHours(newDate.getUTCHours()+1);             //account for UTC + 01:00
-
-
-                        // format newdate to iso & remove unwanted characters
-                        newDate = newDate.toISOString();
-                        if (newDate.includes("T")) {
-                            newDate = newDate.replace("T", " ");
-                        }
-                        if (newDate.includes(".000Z")) {
-                            newDate = newDate.replace(".000Z", "");
-                        }
-                    };
-                    //===================================================================================//
-
-                    // if time limit is in mins, remove text, & add to creation date-------------------//
-                    var limitmins = timeLimit.innerText;
-                    if (limitmins.includes(" minutes")) {
-                        limitmins = limitmins.replace("minutes", "");
-                        limitmins= parseInt(limitmins);
-
-                        function addMinsToDate(createddate, mins) {
-                            var result = createddate;
-                            result.setUTCMinutes(createddate.getUTCMinutes()+mins);
-                            return result;
-                        }
-
-                        var newDate = addMinsToDate(createdDate, limitmins);
-                        newDate.setHours(newDate.getHours()+1);             //account for UTC + 01:00
-
-
-                        // format newdate to iso & remove unwanted characters
-                        newDate = newDate.toISOString();
-                        if (newDate.includes("T")) {
-                            newDate = newDate.replace("T", " ");
-                        }
-                        if (newDate.includes(".000Z")) {
-                            newDate = newDate.replace(".000Z", "");
-                        }
-                    };
-                    //===================================================================================//
-
-
-
-                    const testRow = rowCols[8];
-                    const timeDifference = func(newDate);
-                    testRow.innerText = timeDifference;
+                    var timeLimit = rowCols[6];
+                    newDate = formatDate(createdOnDate, timeLimit);
+                    const result = rowCols[8];
+                    const timeDifference = breakdownDate(newDate);
+                    result.innerText = timeDifference;
                 });
             }
-
             loopThroughTableRows();
-
             setInterval(loopThroughTableRows, 1000)
         </script>
+
+        <!--Calculate Time Remaining (dictated by recovery)-->
+        <!--===========================================================================================-->
+        <script>
+            const loopThroughTableRows2 = () => {
+                const tableRows = Array.from(document.getElementsByTagName('tr'));
+                tableRows.shift(); // removes first one, header
+
+                tableRows.forEach(row => {
+                    var rowCols = row.getElementsByTagName('td');
+                    var createdOnDate = rowCols[3];
+                    var timeLimit = rowCols[7];
+                    newDate = formatDate(createdOnDate, timeLimit);
+                    const result = rowCols[9];
+                    const timeDifference = breakdownDate(newDate);
+                    result.innerText = timeDifference;
+                });
+            }
+            loopThroughTableRows2();
+            setInterval(loopThroughTableRows2, 1000)
+        </script>
+        <!--===========================================================================================-->
     </table>
 </body>
 </html>
