@@ -116,11 +116,7 @@ order by itticket.createdon DESC;
                     createdDate = new Date(createdOnDate.innerText);
                     // createdDate = convertDateToUTC(createdDate);
 
-                    // var date = Math.abs((new Date(createdOnDate.innerText).getTime() / 1000).toFixed(0));
-                    // var days = Math.floor(date / 86400);
-                    // var hours = Math.floor(date / 3600) % 24;
-                    // var mins = Math.floor(date / 60) % 60;
-                    // var secs = date % 60;
+
 
 
                     // if time limit is in days, remove text, & add to creation date-------------------//
@@ -135,7 +131,7 @@ order by itticket.createdon DESC;
                             return result;
                         }
                         var newDate = addDaysToDate(createdDate, limitdays);
-                        newDate.setHours(newDate.getHours()+1);             //account for UTC + 01:00..why 2? it works
+                        newDate.setHours(newDate.getHours()+1);             //account for UTC + 01:00
 
                         // format newdate to iso & remove unwanted characters
                         newDate = newDate.toISOString();
@@ -160,7 +156,34 @@ order by itticket.createdon DESC;
                             return result;
                         }
                         var newDate = addHoursToDate(createdDate, limithours);
-                        newDate.setUTCHours(newDate.getUTCHours()+1);             //account for UTC + 01:00..why 2? it works
+                        newDate.setUTCHours(newDate.getUTCHours()+1);             //account for UTC + 01:00
+
+
+                        // format newdate to iso & remove unwanted characters
+                        newDate = newDate.toISOString();
+                        if (newDate.includes("T")) {
+                            newDate = newDate.replace("T", " ");
+                        }
+                        if (newDate.includes(".000Z")) {
+                            newDate = newDate.replace(".000Z", "");
+                        }
+                    };
+                    //===================================================================================//
+
+                    // if time limit is in mins, remove text, & add to creation date-------------------//
+                    var limitmins = timeLimit.innerText;
+                    if (limitmins.includes(" minutes")) {
+                        limitmins = limitmins.replace("minutes", "");
+                        limitmins= parseInt(limitmins);
+
+                        function addMinsToDate(createddate, mins) {
+                            var result = createddate;
+                            result.setUTCMinutes(createddate.getUTCMinutes()+mins);
+                            return result;
+                        }
+
+                        var newDate = addMinsToDate(createdDate, limitmins);
+                        newDate.setHours(newDate.getHours()+1);             //account for UTC + 01:00
 
 
                         // format newdate to iso & remove unwanted characters
@@ -175,7 +198,8 @@ order by itticket.createdon DESC;
                     //===================================================================================//
 
 
-                const testRow = rowCols[8];
+
+                    const testRow = rowCols[8];
                     const timeDifference = func(newDate);
                     testRow.innerText = timeDifference;
                 });
