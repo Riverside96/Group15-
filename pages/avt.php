@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Login Form</title>
-    <script src="luxon.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.30.1/date_fns.min.js" integrity="sha512-F+u8eWHrfY8Xw9BLzZ8rG/0wIvs0y+JyRJrXjp3VjtFPylAEEGwKbua5Ip/oiVhaTDaDs4eU2Xtsxjs/9ag2bQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../navigation/admindashnavbar.css">
     <link rel="stylesheet" href="../css/admintickettable.css">
@@ -78,17 +78,6 @@ order by itticket.createdon DESC;
         <!--Calculate Time Remaining (dictated by response)-->
         <!--===========================================================================================-->
 
-        <?php
-        $timelimit = '10 mins';
-        $createdon = new DateTime("2022-04-18 23:15:33");
-        $createdon->modify('+'.$timelimit.'');
-        $date = $createdon->format('Y-m-d H:i:s');
-
-        ?>
-
-        <div id="data"></div>
-        <input type="hidden" id="date" value="<?php echo $date; ?>">
-
         <script>
             function func(createdOnDate) {
                 // var dateValue= document.getElementById("date").value;
@@ -121,7 +110,11 @@ order by itticket.createdon DESC;
                     var createdOnDate = rowCols[3];
                     var timeLimit = rowCols[7];
 
+                    // function convertDateToUTC(date) {
+                    //     return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
+                    // }
                     createdDate = new Date(createdOnDate.innerText);
+                    // createdDate = convertDateToUTC(date);
 
                     // var date = Math.abs((new Date(createdOnDate.innerText).getTime() / 1000).toFixed(0));
                     // var days = Math.floor(date / 86400);
@@ -130,22 +123,47 @@ order by itticket.createdon DESC;
                     // var secs = date % 60;
 
 
-                    // if time limit is in days, remove text, & add to creation date
-                    var limitdays = timeLimit.innerText;
-                    if (limitdays.includes(" days")) {
-                        limitdays = limitdays.replace("days", "");
-                        limitdays= parseInt(limitdays);
+                    // if time limit is in days, remove text, & add to creation date-------------------//
+                    // var limitdays = timeLimit.innerText;
+                    // if (limitdays.includes(" days")) {
+                    //     limitdays = limitdays.replace("days", "");
+                    //     limitdays= parseInt(limitdays);
+                    //
+                    //     function addDaysToDate(createddate, days) {
+                    //         var result = createddate;
+                    //         result.setDate(createddate.getDate()+days);
+                    //         return result;
+                    //     }
+                    //     var newDate = addDaysToDate(createdDate, limitdays);
+                    //     newDate.setHours(newDate.getHours()+2);             //account for UTC + 01:00..why 2? it works
+                    //
+                    //     // format newdate to iso & remove unwanted characters
+                    //     newDate = newDate.toISOString();
+                    //     if (newDate.includes("T")) {
+                    //         newDate = newDate.replace("T", " ");
+                    //     }
+                    //     if (newDate.includes(".000Z")) {
+                    //         newDate = newDate.replace(".000Z", "");
+                    //     }
+                    // };
+                    //===================================================================================//
 
+                    // if time limit is in hours, remove text, & add to creation date-------------------//
+                    var limithours = timeLimit.innerText;
+                    if (limithours.includes(" hours")) {
+                        limithours = limithours.replace("hours", "");
+                        limithours= parseInt(limithours);
 
-
-                        function addDaysToDate(createddate, days) {
+                        function addHoursToDate(createddate, hours) {
                             var result = createddate;
-                            result.setUTCDate(createddate.getDate()+days);
+                            result.setUTCHours(createddate.getUTCHours()+hours);
                             return result;
                         }
+                        var newDate = addHoursToDate(createdDate, limithours);
+                        newDate.setUTCHours(newDate.getUTCHours()+1);             //account for UTC + 01:00..why 2? it works
+
 
                         // format newdate to iso & remove unwanted characters
-                        var newDate = addDaysToDate(createdDate, limitdays);
                         newDate = newDate.toISOString();
                         if (newDate.includes("T")) {
                             newDate = newDate.replace("T", " ");
@@ -154,12 +172,10 @@ order by itticket.createdon DESC;
                             newDate = newDate.replace(".000Z", "");
                         }
                     };
+                    //===================================================================================//
 
 
-
-
-
-                    const testRow = rowCols[8];
+                const testRow = rowCols[8];
                     const timeDifference = func(newDate);
                     testRow.innerText = timeDifference;
                 });
