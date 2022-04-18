@@ -114,7 +114,7 @@ order by itticket.createdon DESC;
                     //     return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
                     // }
                     createdDate = new Date(createdOnDate.innerText);
-                    // createdDate = convertDateToUTC(date);
+                    // createdDate = convertDateToUTC(createdDate);
 
                     // var date = Math.abs((new Date(createdOnDate.innerText).getTime() / 1000).toFixed(0));
                     // var days = Math.floor(date / 86400);
@@ -124,28 +124,28 @@ order by itticket.createdon DESC;
 
 
                     // if time limit is in days, remove text, & add to creation date-------------------//
-                    // var limitdays = timeLimit.innerText;
-                    // if (limitdays.includes(" days")) {
-                    //     limitdays = limitdays.replace("days", "");
-                    //     limitdays= parseInt(limitdays);
-                    //
-                    //     function addDaysToDate(createddate, days) {
-                    //         var result = createddate;
-                    //         result.setDate(createddate.getDate()+days);
-                    //         return result;
-                    //     }
-                    //     var newDate = addDaysToDate(createdDate, limitdays);
-                    //     newDate.setHours(newDate.getHours()+2);             //account for UTC + 01:00..why 2? it works
-                    //
-                    //     // format newdate to iso & remove unwanted characters
-                    //     newDate = newDate.toISOString();
-                    //     if (newDate.includes("T")) {
-                    //         newDate = newDate.replace("T", " ");
-                    //     }
-                    //     if (newDate.includes(".000Z")) {
-                    //         newDate = newDate.replace(".000Z", "");
-                    //     }
-                    // };
+                    var limitdays = timeLimit.innerText;
+                    if (limitdays.includes(" days")) {
+                        limitdays = limitdays.replace("days", "");
+                        limitdays= parseInt(limitdays);
+
+                        function addDaysToDate(createddate, days) {
+                            var result = createddate;
+                            result.setDate(createddate.getDate()+days);
+                            return result;
+                        }
+                        var newDate = addDaysToDate(createdDate, limitdays);
+                        newDate.setHours(newDate.getHours()+1);             //account for UTC + 01:00..why 2? it works
+
+                        // format newdate to iso & remove unwanted characters
+                        newDate = newDate.toISOString();
+                        if (newDate.includes("T")) {
+                            newDate = newDate.replace("T", " ");
+                        }
+                        if (newDate.includes(".000Z")) {
+                            newDate = newDate.replace(".000Z", "");
+                        }
+                    };
                     //===================================================================================//
 
                     // if time limit is in hours, remove text, & add to creation date-------------------//
