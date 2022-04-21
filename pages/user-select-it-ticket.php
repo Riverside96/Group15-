@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-
 <!---------------- View Outstanding Tickets (User) ---------------------------- -->
 <head>
     <?php include'../navigation/userdashnavbar.php';
@@ -11,7 +8,7 @@
     <meta charset="UTF-8">
     <title>Login Form</title>
     <link rel="stylesheet" href="../navigation/userdashnavbar.css">
-    <link rel="stylesheet" href="../css/admintickettable.css">
+    <link rel="stylesheet" href="../css/usertickettable.css">
     <link rel="stylesheet" href="../css/user-select-button.css">
 
 

@@ -10,45 +10,58 @@
     <link rel="stylesheet" href="../navigation/admindashnavbar.css">
     <link rel="stylesheet" href="../css/admindash.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
-
-
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body bgcolor="#2E3746">
-<div class="full-screen-container">
 
-
-
-    <div class="dashboard-cards">
-        <div class="card" id="card-1">
-            <div class="chart-canvas">
-                <canvas id="LiquidityPlanning"></canvas>
-            </div>
-        </div>
-        <div class="card"  id="card-2">
-            <div class="chart-canvas">
-                <div class="chart-options">
-                    <select onchange="updateStreamEC()" name="cashstream" id="cashstreamEC">
-                        <option value="Expense">Expense</option>
-                        <option value="Income">Income</option>
-                    </select>
-                </div>
-                <canvas id="ExpensesByCategory"></canvas>
-
-            </div>
-        </div>
-        <div class="card"  id="card-3">
-            <div class="chart-canvas">
-                <canvas id="ExpensesByPaymentMethod"></canvas>
-            </div>
-        </div>
-        <div class="card"  id="card-4">
-            <div class="chart-canvas">
-                <canvas id="ExpensesByCategoryBenchmark"></canvas>
-            </div>
-        </div>
-    </div>
+<div class="container rounded shadow" >
+    <canvas class="m-40" style="padding-left: 20%" id="myChart"></canvas>
 </div>
+
+
+<script>
+    let myChart = document.getElementById('myChart').getContext('2d');
+
+
+    let chart1 = new Chart(myChart, {
+        type:'bar', //bar, horizontalBar, pie, line, doughnut, radar, polarArea
+        data:{
+            labels:['London', 'Birmingham', 'Leeds', 'Glasgow', 'Sheffield'],
+            datasets:[{
+                label:'Population',
+                data:[7074265, 1020589, 726939, 616430, 530375
+                ],
+                backgroundColor:[
+                   '#222',
+                    '#333',
+                    '#444',
+                    '#555',
+                    '#666'
+                ],
+                fontSize:80,
+                borderWidth:2,
+                borderColor:'#777',
+                hoverBorderWidth:'3',
+                hoverBorderColor:'black'
+
+            }]
+        },
+        options:{
+            plugins: {
+            title: {
+                display: true,
+                text: 'custom text',
+                padding: {
+                    top: 10,
+                    bottom: 30
+                }
+            }
+
+            }
+        }
+    });
+
+</script>
+
 </body>
 </html>

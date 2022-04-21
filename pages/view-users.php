@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Login Form</title>
     <link rel="stylesheet" href="../navigation/admindashnavbar.css">
-    <link rel="stylesheet" href="../css/admintickettableOG.css">
+    <link rel="stylesheet" href="../css/admintickettable.css">
 
 
 </head>
@@ -32,7 +32,7 @@
             <th>User Type</th>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>View</th>
+            <th>Change User Password</th>
         </tr>
 
         </thead>
