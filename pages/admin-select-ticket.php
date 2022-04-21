@@ -33,7 +33,8 @@
                itsupportservices.severity,
                itsupportservices.response, 
                itsupportservices.recovery,
-               itticket.full
+               itticket.full,
+               itticket.comment
         from itticket
         left join itsupportservices
         on itticket.severity=itsupportservices.id
@@ -60,6 +61,7 @@
             <th>Response</th>
             <th>Recovery</th>
             <th>Full Description</th>
+            <th>Comment</th>
             <th>Select</th>
         </tr>
 
@@ -78,6 +80,7 @@
                 <td><?= $test; ?> </td>
                 <td><?= $responsetest; ?> </td>
                 <td><?= $data->full; ?> </td>
+                <td><?= $data->comment; ?> </td>
                 <td>
                     <a href="../pages/admin-set-ticket-status.php?id=<?= $data->id; ?>" class="setstatus">Set Status</a>
                 </td>
